@@ -1,0 +1,22 @@
+name: RSpec
+
+on:
+  - pull_request
+  - push
+
+jobs:
+  rspec:
+    name: RSpec
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version:
+          - "3.3"
+          - "3.4"
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+          ruby-version: ${{ matrix.ruby-version }}
+      - run: bundle exec rake
