@@ -7,7 +7,7 @@ A helper to fetch dynamically allocated ports with Docker Compose.
 Add the following to your Gemfile
 
 ```ruby
-gem 'compose', git: 'https://github.com/kickstarter/rails-compose'
+gem 'compose', git: 'https://github.com/kickstarter/compose'
 ```
 
 ## Usage

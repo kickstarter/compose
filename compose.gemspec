@@ -10,14 +10,14 @@ Gem::Specification.new do |spec|
 
   spec.summary = 'Helper to use Docker Compose services with Rails'
   spec.description = 'Find dynamically allocated ports for services with Docker Compose'
-  spec.homepage = 'https://github.com/kickstarter/rails-compose'
+  spec.homepage = 'https://github.com/kickstarter/compose'
   spec.required_ruby_version = '>= 3.1.0'
 
   spec.metadata['allowed_push_host'] = nil
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/kickstarter/rails-compose'
-  spec.metadata['changelog_uri'] = 'https://github.com/kickstarter/rails-compose/releases'
+  spec.metadata['source_code_uri'] = 'https://github.com/kickstarter/compose'
+  spec.metadata['changelog_uri'] = 'https://github.com/kickstarter/compose/releases'
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
