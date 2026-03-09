@@ -36,3 +36,14 @@ development:
   port: <%= Config.port(:redis, 6379) %>
   url: <%= Config.port(:redis, 6379, 'redis://localhost:%s/') %>
 ```
+
+Allowe ENV overrides with:
+
+```yaml
+# ./config/redis.yml
+---
+development:
+  host: <%= ENV.fetch('REDIS_HOST', 'localhost') %>
+  port: <%= ENV.fetch('REDIS_PORT') { Config.port(:redis, 6379) } %>
+  url: <%= ENV.fetch('REDIS_URL') { Config.port(:redis, 6379, 'redis://localhost:%s/') } %>
+```
