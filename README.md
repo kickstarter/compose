@@ -37,7 +37,7 @@ development:
   url: <%= Config.port(:redis, 6379, 'redis://localhost:%s/') %>
 ```
 
-Allowe ENV overrides with:
+Allow ENV overrides with:
 
 ```yaml
 # ./config/redis.yml
