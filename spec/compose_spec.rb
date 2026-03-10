@@ -16,6 +16,24 @@ RSpec.describe Compose do
     }
   end
 
+  describe '::enabled?' do
+    context 'when docker is not found on the filesystem' do
+      before { allow(described_class).to receive(:docker).and_return nil }
+
+      it 'returns false' do
+        expect(described_class.enabled?).to be false
+      end
+    end
+
+    context 'when docker is found on the filesystem' do
+      before { allow(described_class).to receive(:docker).and_return '/usr/local/bin/docker' }
+
+      it 'returns true' do
+        expect(described_class.enabled?).to be true
+      end
+    end
+  end
+
   describe '::ports' do
     before do
       allow(described_class).to receive(:execute)
