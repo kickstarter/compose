@@ -18,7 +18,12 @@ RSpec.describe Compose do
 
   describe '::enabled?' do
     context 'when docker is not found on the filesystem' do
-      before { allow(described_class).to receive(:docker).and_return nil }
+      before do
+        allow(Kernel).to receive(:system)
+          .with('docker', '--version', out: File::NULL, err: File::NULL)
+          .and_return false
+      end
+
 
       it 'returns false' do
         expect(described_class.enabled?).to be false
@@ -26,7 +31,11 @@ RSpec.describe Compose do
     end
 
     context 'when docker is found on the filesystem' do
-      before { allow(described_class).to receive(:docker).and_return '/usr/local/bin/docker' }
+      before do
+        allow(Kernel).to receive(:system)
+          .with('docker', '--version', out: File::NULL, err: File::NULL)
+          .and_return true
+      end
 
       it 'returns true' do
         expect(described_class.enabled?).to be true

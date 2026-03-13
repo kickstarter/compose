@@ -7,17 +7,11 @@ require_relative 'compose/version'
 ##
 # Your one-stop shop for local development needs
 module Compose
-  def self.docker
-    @docker ||= `command -v docker`.chomp.then { |x| x.empty? ? nil : x }
-  end
-
   def self.execute(*args)
-    `#{docker} compose #{args.join ' '}`.chomp
+    `docker compose #{args.join ' '}`.chomp
   end
 
   def self.port(service, port, template = nil)
-    return unless enabled?
-
     port = ports.dig(service.to_s, port.to_s)
     port && template ? template % port : port
   end
@@ -39,6 +33,7 @@ module Compose
   end
 
   def self.enabled?
-    !docker.nil? && (ENV['RAILS_DISABLE_COMPOSE'].nil? || ENV['RAILS_DISABLE_COMPOSE'] == '')
+    ENV['RAILS_DISABLE_COMPOSE'].to_s.empty? &&
+    Kernel.system('docker', '--version', out: File::NULL, err: File::NULL)
   end
 end
