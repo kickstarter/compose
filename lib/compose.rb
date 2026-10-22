@@ -34,6 +34,6 @@ module Compose
 
   def self.enabled?
     ENV['RAILS_DISABLE_COMPOSE'].to_s.empty? &&
-    Kernel.system('docker', '--version', out: File::NULL, err: File::NULL)
+      Kernel.system('docker', '--version', out: File::NULL, err: File::NULL)
   end
 end
