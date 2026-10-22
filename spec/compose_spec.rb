@@ -24,7 +24,6 @@ RSpec.describe Compose do
           .and_return false
       end
 
-
       it 'returns false' do
         expect(described_class.enabled?).to be false
       end
