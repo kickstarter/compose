@@ -47,3 +47,9 @@ development:
   port: <%= ENV.fetch('REDIS_PORT') { Config.port(:redis, 6379) } %>
   url: <%= ENV.fetch('REDIS_URL') { Config.port(:redis, 6379, 'redis://localhost:%s/') } %>
 ```
+
+Reset the cached map of ports with:
+
+```ruby
+Compose.reset!
+```
